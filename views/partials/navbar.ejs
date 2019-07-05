@@ -1,0 +1,42 @@
+<nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-top">
+    <!-- Brand -->
+    <a class="navbar-brand" href="/"><img src="/public/AAP-Logo-Color-40x40.jpg" /></a>
+    <a class="navbar-brand" href="/">MyAAP</a>
+
+
+    <!-- Toggler/collapsibe Button -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Navbar links -->
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav">
+
+            <li class="nav-item<% if (typeof activePage != 'undefined' && activePage == 'home') { %> active<% } %>">
+                <a class="nav-link" href="/">Home</a></li>
+            <li
+                class="nav-item<% if (typeof activePage != 'undefined' && activePage == 'dashboard') { %> active<% } %>">
+                <a class="nav-link" href="/dashboard">My Dashboard</a></li>
+        </ul>
+        <div class="navbar-nav ml-auto">
+            <ul class="navbar-nav">
+                <% if(typeof email != 'undefined') { %>
+                <li class="nav-item">
+                    <span class="navbar-text">Logged in as: <%= email %></span>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/users/logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                </li>
+                <% } else { %>
+                <li class="nav-item">
+                    <a class="nav-link" href="/users/register"><i class="fas fa-user-plus"></i> Register</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/users/login"><i class="fas fa-sign-in-alt"></i> Login</a>
+                </li>
+                <% } %>
+            </ul>
+        </div>
+    </div>
+</nav>
