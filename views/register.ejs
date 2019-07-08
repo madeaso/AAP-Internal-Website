@@ -7,40 +7,39 @@
             <% include ./partials/messages %>
             <form action="/users/register" method="POST">
                 <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="name" id="name" name="name" class="form-control" placeholder="Enter Name"
-                        value="<%= typeof name != 'undefined' ? name : '' %>" />
+                    <label for="nameForm">Name</label>
+                    <input type="name" id="nameForm" name="nameForm" class="form-control" placeholder="Enter Name"
+                        value="<%= typeof nameForm != 'undefined' ? nameForm : '' %>" />
                 </div>
                 <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" class="form-control" placeholder="Enter Email"
-                        value="<%= typeof email != 'undefined' ? email : '' %>" />
+                    <label for="emailForm">Email</label>
+                    <input type="email" id="emailForm" name="emailForm" class="form-control" placeholder="Enter Email"
+                        value="<%= typeof emailForm != 'undefined' ? emailForm : '' %>" />
                 </div>
                 <div class="form-group">
-                    <label for="accountType">Account Type</label>
-                    <select id="accountType" name="accountType" class="form-control">
+                    <label for="accountTypeForm">Account Type</label>
+                    <select id="accountTypeForm" name="accountTypeForm" class="form-control">
                         <option></option>
-                        <option <% if (typeof accountType != 'undefined' && accountType == 'Customer') { %> selected="selected" <% } %>>Customer</option>
-                        <option <% if (typeof accountType != 'undefined' && accountType == 'Employee') { %> selected="selected" <% } %>>Employee</option>
-                        <option <% if (typeof accountType != 'undefined' && accountType == 'SystemAdmin') { %> selected="selected" <% } %>>SystemAdmin</option>
+                        <option <% if (typeof accountTypeForm != 'undefined' && accountTypeForm == 'Customer') { %> selected="selected" <% } %>>Customer</option>
+                        <option <% if (typeof accountTypeForm != 'undefined' && accountTypeForm == 'Employee') { %> selected="selected" <% } %>>Employee</option>
+                        <option <% if (typeof accountTypeForm != 'undefined' && accountTypeForm == 'SystemAdmin') { %> selected="selected" <% } %>>SystemAdmin</option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" id="password" name="password" class="form-control"
-                        placeholder="Create Password" value="<%= typeof password != 'undefined' ? password : '' %>" />
+                    <label for="passwordForm">Password</label>
+                    <input type="password" id="passwordForm" name="passwordForm" class="form-control"
+                        placeholder="Create Password" value="<%= typeof passwordForm != 'undefined' ? passwordForm : '' %>" />
                 </div>
                 <div class="form-group">
-                    <label for="password2">Confirm Password</label>
-                    <input type="password" id="password2" name="password2" class="form-control"
+                    <label for="password2Form">Confirm Password</label>
+                    <input type="password" id="password2Form" name="password2Form" class="form-control"
                         placeholder="Confirm Password"
-                        value="<%= typeof password2 != 'undefined' ? password2 : '' %>" />
+                        value="<%= typeof password2Form != 'undefined' ? password2Form : '' %>" />
                 </div>
                 <button type="submit" class="btn btn-primary btn-block">
                     Register
                 </button>
             </form>
-            <p class="lead mt-4">Have An Account? <a href="/users/login">Login</a></p>
         </div>
     </div>
 </div>

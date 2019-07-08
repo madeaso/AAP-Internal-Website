@@ -2,66 +2,79 @@ const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcryptjs');
 const passport = require('passport');
+const ensureAdmin = require('../config/auth').ensureAdmin;
 
 // User model
 const User = require('../models/User');
 
 // Login Page
-router.get('/login', (req, res) => res.render('login'));
+router.get('/login', (req, res) => {
+    if (req.isAuthenticated()) {
+        // Log the user out and allow them to login again
+        req.logout();
+        req.flash('success_msg', 'You have been logged out, you may now login again');
+        res.redirect('/users/login');
+    } else {
+        res.render('login');
+    }
+});
 
 // Register Page
-router.get('/register', (req, res) => res.render('register'));
+router.get('/register', ensureAdmin, (req, res) => res.render('register', {
+    email: req.user.email,
+    accountType: req.user.accountType
+}));
 
 // Register Handle
-router.post('/register', (req, res) => {
-    const { name, email, accountType, password, password2 } = req.body;
+router.post('/register', ensureAdmin, (req, res) => {
+    const { nameForm, emailForm, accountTypeForm, passwordForm, password2Form } = req.body;
     let errors = [];
 
     // Check required fields
-    if (!name || !email || !accountType || !password || !password2) {
+    if (!nameForm || !emailForm || !accountTypeForm || !passwordForm || !password2Form) {
         errors.push({ msg: 'Please fill in all fields' });
     }
 
     // Check passwords match
-    if (password != password2) {
+    if (passwordForm != password2Form) {
         errors.push({ msg: 'Passwords do not match' });
     }
 
     // Check password length
-    if (password.length < 6) {
+    if (passwordForm.length < 6) {
         errors.push({ msg: 'Password should be at least 6 characters long' });
     }
 
     if (errors.length > 0) {
         res.render('register', {
             errors,
-            name,
-            email,
-            accountType,
-            password,
-            password2
+            nameForm,
+            emailForm,
+            accountTypeForm,
+            passwordForm,
+            password2Form
         });
     } else {
         // Validation passed
-        User.findOne({ email: email })
+        User.findOne({ email: emailForm })
             .then(user => {
                 if (user) {
                     // User exists
                     errors.push({ msg: 'This email is already registered' });
                     res.render('register', {
                         errors,
-                        name,
-                        email,
-                        accountType,
-                        password,
-                        password2
+                        nameForm,
+                        emailForm,
+                        accountTypeForm,
+                        passwordForm,
+                        password2Form
                     });
                 } else {
                     const newUser = new User({
-                        name,
-                        email,
-                        accountType,
-                        password
+                        name: nameForm,
+                        email: emailForm,
+                        accountType: accountTypeForm,
+                        password: passwordForm
                     });
 
                     // Hash Password
@@ -73,15 +86,15 @@ router.post('/register', (req, res) => {
                             // Save user
                             newUser.save()
                                 .then(user => {
-                                    req.flash('success_msg', 'You are now registered and can log in');
-                                    res.redirect('/users/login');
+                                    req.flash('success_msg', 'The user has been registered');
+                                    res.redirect('/users/register');
                                 })
                                 .catch(err => console.log(err));
                         })
                     );
                 }
             })
-            //.catch();
+        //.catch();
     }
 });
 

@@ -6,5 +6,12 @@ module.exports = {
         }
         req.flash('error_msg', 'Please log in to view this page');
         res.redirect('/users/login');
+    },
+    ensureAdmin: function (req, res, next) {
+        if (typeof req.user != 'undefined' && req.user.accountType == 'SystemAdmin') {
+            return next();
+        }
+        req.flash('account_type_error', 'You do not have access to view this page');
+        res.redirect('/dashboard');
     }
 }
