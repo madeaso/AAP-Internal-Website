@@ -1,0 +1,43 @@
+<% include ./partials/messages %>
+<h1 class="mt-3">Dashboard Placeholder</h1>
+<p class="lead mb-3">Welcome <%= name %></p>
+
+<div class="row">
+    <div class="col-sm-3">
+        <% include ./partials/dashboard-modules %>
+    </div>
+    <div class="col-sm-9">
+
+        <table class="table table-sm">
+            <thead class="thead-light">
+                <tr>
+                    <th scope="col">Actions</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Account Type</th>
+                    <th scope="col">Date Created</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% list.forEach(function (user) { %>
+                <tr>
+                    <th scope="row"><a href="#" data-toggle="tooltip" title="Edit user"><button class="btn"
+                                data-toggle="modal" data-target="#editUserModal" data-user_id="<%= user._id %>"
+                                data-name="<%= user.name %>" data-email="<%= user.email %>"
+                                data-account_type="<%= user.accountType %>"><i class="fas fa-edit"></i></button></a>
+                        <a href="#" class="btn" data-toggle="tooltip" title="Reset password"
+                            data-user_id="<%= user._id %>"><i class="fas fa-sync-alt"></i></a>
+                        <a href="#" class="btn" data-toggle="tooltip" title="Delete user"
+                            data-user_id="<%= user._id %>"><i class="fas fa-trash"></i></a></th>
+                    </th>
+                    <td><%= user.name %></td>
+                    <td><%= user.email %></td>
+                    <td><%= user.accountType %></td>
+                    <td><%= user.date.toISOString().replace(/T/, ' ').replace(/\..+/, '') %></td>
+                </tr>
+                <% }); %>
+            </tbody>
+        </table>
+        <% include ./partials/edit-user-modal %>
+    </div>
+</div>

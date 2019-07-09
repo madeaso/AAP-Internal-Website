@@ -1,4 +1,4 @@
-# Project Title
+# All About Parking Internal Website
 
 One Paragraph of project description goes here
 
@@ -58,9 +58,9 @@ Add additional notes about how to deploy this on a live system
 
 ## Built With
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+* [Node JS](https://nodejs.org/) - 
+* [Express](https://expressjs.com/) - The web framework used
+* [Bootstrap](https://getbootstrap.com/) - Front-end components
 
 ## Contributing
 

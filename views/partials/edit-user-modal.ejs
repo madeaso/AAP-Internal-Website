@@ -1,0 +1,39 @@
+<div class="modal fade" id="editUserModal" tabindex="-1" role="dialog" aria-labelledby="editUserModalTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editUserModalTitle">Edit User</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="/admin/update-user" method="POST">
+                    <div class="form-group">
+                        <label for="nameForm">Name</label>
+                        <input type="name" id="nameForm" name="nameForm" class="form-control" placeholder="Enter Name"
+                            value="<%= typeof nameForm != 'undefined' ? nameForm : '' %>" />
+                    </div>
+                    <div class="form-group">
+                        <label for="emailForm">Email</label>
+                        <input type="email" id="emailForm" name="emailForm" class="form-control"
+                            placeholder="Enter Email" value="<%= typeof emailForm != 'undefined' ? emailForm : '' %>" />
+                    </div>
+                    <div class="form-group">
+                        <label for="accountTypeForm">Account Type</label>
+                        <select id="accountTypeForm" name="accountTypeForm" class="form-control">
+                            <option>Customer</option>
+                            <option>Employee</option>
+                            <option>SystemAdmin</option>
+                        </select>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
