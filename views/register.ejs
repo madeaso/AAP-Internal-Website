@@ -20,15 +20,33 @@
                     <label for="accountTypeForm">Account Type</label>
                     <select id="accountTypeForm" name="accountTypeForm" class="form-control">
                         <option></option>
-                        <option <% if (typeof accountTypeForm != 'undefined' && accountTypeForm == 'Customer') { %> selected="selected" <% } %>>Customer</option>
-                        <option <% if (typeof accountTypeForm != 'undefined' && accountTypeForm == 'Employee') { %> selected="selected" <% } %>>Employee</option>
-                        <option <% if (typeof accountTypeForm != 'undefined' && accountTypeForm == 'SystemAdmin') { %> selected="selected" <% } %>>SystemAdmin</option>
+                        <option <% if (typeof accountTypeForm != 'undefined' && accountTypeForm == 'Customer') { %>
+                            selected="selected" <% } %>>Customer</option>
+                        <option <% if (typeof accountTypeForm != 'undefined' && accountTypeForm == 'Employee') { %>
+                            selected="selected" <% } %>>Employee</option>
+                        <option <% if (typeof accountTypeForm != 'undefined' && accountTypeForm == 'SystemAdmin') { %>
+                            selected="selected" <% } %>>SystemAdmin</option>
+                    </select>
+                </div>
+                <div class="form-group" id="positionFormGroup">
+                    <label for="positionForm">Position</label>
+                    <select id="positionForm" name="positionForm" class="form-control">
+                        <option></option>
+                        <option <% if (typeof positionForm != 'undefined' && positionForm == 'Associate I') { %>
+                            selected="selected" <% } %>>Associate I</option>
+                        <option <% if (typeof positionForm != 'undefined' && positionForm == 'Associate II') { %>
+                            selected="selected" <% } %>>Associate II</option>
+                        <option <% if (typeof positionForm != 'undefined' && positionForm == 'Associate III') { %>
+                            selected="selected" <% } %>>Associate III</option>
+                        <option <% if (typeof positionForm != 'undefined' && positionForm == '...') { %>
+                            selected="selected" <% } %>>...</option>
                     </select>
                 </div>
                 <div class="form-group">
                     <label for="passwordForm">Password</label>
                     <input type="password" id="passwordForm" name="passwordForm" class="form-control"
-                        placeholder="Create Password" value="<%= typeof passwordForm != 'undefined' ? passwordForm : '' %>" />
+                        placeholder="Create Password"
+                        value="<%= typeof passwordForm != 'undefined' ? passwordForm : '' %>" />
                 </div>
                 <div class="form-group">
                     <label for="password2Form">Confirm Password</label>

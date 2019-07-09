@@ -1,20 +1,65 @@
 <script>
-    $(function () {
-        $('[data-toggle="tooltip"]').tooltip()
-    })
+    <% if (typeof activePage != 'undefined' && activePage == 'user-list') { %>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+
+        $("#accountTypeForm").change(function () {
+            if ($(this).val() == "Employee") {
+                $('#positionForm').val("")
+                $('#positionFormGroup').show();
+                $('#positionFormGroup').attr('required', '');
+            } else {
+                $('#positionForm').val("")
+                $('#positionFormGroup').hide();
+                $('#positionFormGroup').removeAttr('required');
+            }
+        });
+
+        $('#editUserModal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget) // Button that triggered the modal
+            var userID = button.data('user_id') // Extract info from data-* attributes
+            var email = button.data('email')
+            var name = button.data('name')
+            var accountType = button.data('account_type')
+            var position = button.data('employee_position')
+            // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+            // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+            var modal = $(this)
+            modal.find('#editUserID').val(userID)
+            modal.find('#emailForm').val(email)
+            modal.find('#nameForm').val(name)
+            modal.find('#accountTypeForm').val(accountType)
+            $("#accountTypeForm").trigger("change");
+            modal.find('#positionForm').val(position)
+        })
+
+        $('#deleteUserModal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget) // Button that triggered the modal
+            var userID = button.data('user_id') // Extract info from data-* attributes
+            var name = button.data('name')
+            var email = button.data('email')
+            // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+            // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+            var modal = $(this)
+            modal.find('#deleteUserID').val(userID)
+            modal.find('#deleteName').val(name)
+            modal.find('#deleteEmail').val(email)
+        })
+            <% } %>
     
-    $('#editUserModal').on('show.bs.modal', function (event) {
-        var button = $(event.relatedTarget) // Button that triggered the modal
-        var userID = button.data('user_id') // Extract info from data-* attributes
-        var name = button.data('name')
-        var email = button.data('email')
-        var accountType = button.data('account_type')
-        // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-        // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-        var modal = $(this)
-        modal.find('.modal-title').text('Edit User: ' + userID)
-        modal.find('#nameForm').val(name)
-        modal.find('#emailForm').val(email)
-        modal.find('#accountTypeForm').val(accountType)
-    })
+    <% if (typeof activePage != 'undefined' && activePage == 'register') { %>
+        $("#accountTypeForm").change(function () {
+            if ($(this).val() == "Employee") {
+                $('#positionForm').val("")
+                $('#positionFormGroup').show();
+                $('#positionFormGroup').attr('required', '');
+            } else {
+                $('#positionForm').val("")
+                $('#positionFormGroup').hide();
+                $('#positionFormGroup').removeAttr('required');
+            }
+        });
+        $("#accountTypeForm").trigger("change");
+    <% } %>
 </script>

@@ -10,15 +10,24 @@
             </div>
             <div class="modal-body">
                 <form action="/admin/update-user" method="POST">
+                    <div class="form-group row">
+                        <label for="editUserID" class="col-sm-3 col-form-label">User ID</label>
+                        <div class="col-sm-9">
+                            <input type="text" readonly class="form-control-plaintext" id="editUserID" name="editUserID"
+                                value="">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="emailForm" class="col-sm-3 col-form-label">Email</label>
+                        <div class="col-sm-9">
+                            <input type="email" readonly class="form-control-plaintext" id="emailForm" name="emailForm"
+                                value="">
+                        </div>
+                    </div>
                     <div class="form-group">
                         <label for="nameForm">Name</label>
                         <input type="name" id="nameForm" name="nameForm" class="form-control" placeholder="Enter Name"
-                            value="<%= typeof nameForm != 'undefined' ? nameForm : '' %>" />
-                    </div>
-                    <div class="form-group">
-                        <label for="emailForm">Email</label>
-                        <input type="email" id="emailForm" name="emailForm" class="form-control"
-                            placeholder="Enter Email" value="<%= typeof emailForm != 'undefined' ? emailForm : '' %>" />
+                            value="" />
                     </div>
                     <div class="form-group">
                         <label for="accountTypeForm">Account Type</label>
@@ -26,6 +35,15 @@
                             <option>Customer</option>
                             <option>Employee</option>
                             <option>SystemAdmin</option>
+                        </select>
+                    </div>
+                    <div class="form-group" id="positionFormGroup">
+                        <label for="positionForm">Position</label>
+                        <select id="positionForm" name="positionForm" class="form-control">
+                            <option>Associate I</option>
+                            <option>Associate II</option>
+                            <option>Associate III</option>
+                            <option>...</option>
                         </select>
                     </div>
                     <div class="modal-footer">

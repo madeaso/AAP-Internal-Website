@@ -21,15 +21,19 @@
             <tbody>
                 <% list.forEach(function (user) { %>
                 <tr>
-                    <th scope="row"><a href="#" data-toggle="tooltip" title="Edit user"><button class="btn"
-                                data-toggle="modal" data-target="#editUserModal" data-user_id="<%= user._id %>"
-                                data-name="<%= user.name %>" data-email="<%= user.email %>"
-                                data-account_type="<%= user.accountType %>"><i class="fas fa-edit"></i></button></a>
+                    <td scope="row">
+                        <a href="#" data-toggle="tooltip" title="Edit user">
+                            <button class="btn" data-toggle="modal" data-target="#editUserModal"
+                                data-user_id="<%= user._id %>" data-name="<%= user.name %>"
+                                data-email="<%= user.email %>" data-account_type="<%= user.accountType %>"
+                                data-employee_position="<%= user.position %>"><i class="fas fa-edit"></i></button></a>
                         <a href="#" class="btn" data-toggle="tooltip" title="Reset password"
                             data-user_id="<%= user._id %>"><i class="fas fa-sync-alt"></i></a>
-                        <a href="#" class="btn" data-toggle="tooltip" title="Delete user"
-                            data-user_id="<%= user._id %>"><i class="fas fa-trash"></i></a></th>
-                    </th>
+                        <a href="#" data-toggle="tooltip" title="Delete user">
+                            <button class="btn" data-toggle="modal" data-target="#deleteUserModal"
+                                data-user_id="<%= user._id %>" data-name="<%= user.name %>"
+                                data-email="<%= user.email %>"><i class="fas fa-trash"></i></button></a>
+                    </td>
                     <td><%= user.name %></td>
                     <td><%= user.email %></td>
                     <td><%= user.accountType %></td>
@@ -39,5 +43,6 @@
             </tbody>
         </table>
         <% include ./partials/edit-user-modal %>
+        <% include ./partials/delete-user-modal %>
     </div>
 </div>

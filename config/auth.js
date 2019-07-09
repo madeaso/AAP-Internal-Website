@@ -8,7 +8,7 @@ module.exports = {
         res.redirect('/users/login');
     },
     ensureAdmin: function (req, res, next) {
-        if (typeof req.user != 'undefined' && req.user.accountType == 'SystemAdmin') {
+        if (req.isAuthenticated() && typeof req.user != 'undefined' && req.user.accountType == 'SystemAdmin') {
             return next();
         }
         req.flash('account_type_error', 'You do not have access to view this page');
