@@ -10,7 +10,8 @@ const User = require('../models/User');
 router.get('/user-list', ensureAdmin, (req, res) => User.find({})
     .then(users => {
         res.render('user-list', {
-            activePage: 'user-list',
+            activePage: 'dashboard',
+            activeModule: 'user-list',
             name: req.user.name,
             email: req.user.email,
             accountType: req.user.accountType,
@@ -32,12 +33,13 @@ router.post('/update-user', ensureAdmin, (req, res) => {
             // `dbres.modifiedCount` contains the number of docs that MongoDB updated
             if (err) {
                 console.log(err);
+                req.flash('error_msg', 'An error occured, user may not have been updated');
+                res.redirect('/admin/user-list');
             } else {
                 req.flash('success_msg', 'User has been successfully updated');
                 res.redirect('/admin/user-list');
             }
         });
-
     }
 });
 

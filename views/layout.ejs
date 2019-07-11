@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="stylesheet" type="text/css" href="/css/custom-styles.css" />
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
@@ -14,12 +16,20 @@
 </head>
 
 <body>
-    <div class="container-fluid">
+    <!-- Header -->
+    <header class="container-fluid">
         <% include ./partials/navbar %>
-    </div>
-    <div class="container-fluid" style="padding-top: 85px">
+    </header>
+    <!-- Body -->
+    <div class="container-fluid px-0" style="padding-top: 66px">
         <%- body %>
     </div>
+    <!-- FOOTER -->
+    <hr class="featurette-divider">
+    <footer class="container">
+        <p class="float-right"><a href="#">Back to top</a></p>
+        <p>© 2017-2018 Company, Inc. · <a href="#">Privacy</a> · <a href="#">Terms</a></p>
+    </footer>
 
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>

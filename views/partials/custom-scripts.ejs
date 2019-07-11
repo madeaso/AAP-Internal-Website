@@ -1,5 +1,5 @@
 <script>
-    <% if (typeof activePage != 'undefined' && activePage == 'user-list') { %>
+    <% if (typeof activeModule != 'undefined' && activeModule == 'user-list') { %>
         $(function () {
             $('[data-toggle="tooltip"]').tooltip()
         })
@@ -51,7 +51,6 @@
     <% if (typeof activePage != 'undefined' && activePage == 'register') { %>
         $("#accountTypeForm").change(function () {
             if ($(this).val() == "Employee") {
-                $('#positionForm').val("")
                 $('#positionFormGroup').show();
                 $('#positionFormGroup').attr('required', '');
             } else {
