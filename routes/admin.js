@@ -8,7 +8,7 @@ const User = require('../models/User');
 // Show user list
 router.get('/user-list', ensureAdmin, (req, res) => User.find({})
     .then(users => {
-        res.render('user-list', {
+        res.render('dashboard', {
             activePage: 'dashboard',
             activeModule: 'user-list',
             name: req.user.name,

@@ -49,6 +49,8 @@ router.post('/register', ensureAdmin, (req, res) => {
     if (errors.length > 0) {
         res.render('register', {
             activePage: 'register',
+            email: req.user.email,
+            accountType: req.user.accountType,
             errors,
             nameForm,
             emailForm,
@@ -66,6 +68,8 @@ router.post('/register', ensureAdmin, (req, res) => {
                     errors.push({ msg: 'This email is already registered' });
                     res.render('register', {
                         activePage: 'register',
+                        email: req.user.email,
+                        accountType: req.user.accountType,
                         errors,
                         nameForm,
                         emailForm,

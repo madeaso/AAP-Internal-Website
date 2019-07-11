@@ -1,9 +1,9 @@
 <!-- Admin modules -->
-<% if (type of activeModule != 'undefined' && activeModule == 'user-list') { %>
+<% if (typeof activeModule != 'undefined' && activeModule == 'user-list') { %>
     <% include ./admin/user-list %>
 <% } %>
 
 <!-- Client modules -->
-<% if (type of activeModule != 'undefined' && activeModule == 'valet-summary') { %>
+<% if (typeof activeModule != 'undefined' && activeModule == 'valet-summary') { %>
     <% include ./client/valet-summary %>
 <% } %>
