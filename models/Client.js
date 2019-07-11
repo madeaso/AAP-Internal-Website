@@ -1,20 +1,22 @@
-const mongoose = require('mongoose');
+// Is model inheritance possible? Client extends User?
 
-const ClientSchema = new mongoose.Schema({
-    name: {
-        type: String,
-        required: true
-    },
-    address: {
-        type: String,
-        required: true
-    },
-    valetReportURL: {
-        type: String,
-        required: false
-    }
-})
+// const mongoose = require('mongoose');
 
-const Client = mongoose.model('Client', ClientSchema);
+// const ClientSchema = new mongoose.Schema({
+//     name: {
+//         type: String,
+//         required: true
+//     },
+//     address: {
+//         type: String,
+//         required: true
+//     },
+//     valetSummaryURL: {
+//         type: String,
+//         required: false
+//     }
+// })
 
-module.exports = Client;
+// const Client = mongoose.model('Client', ClientSchema);
+
+// module.exports = Client;

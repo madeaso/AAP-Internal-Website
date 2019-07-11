@@ -13,6 +13,10 @@ const UserSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    valetSummaryURL: {
+        type: String,
+        required: false
+    },
     position: {
         type: String,
         required: false

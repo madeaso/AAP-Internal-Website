@@ -28,11 +28,11 @@ router.get('/register', ensureAdmin, (req, res) => res.render('register', {
 
 // Register Handle
 router.post('/register', ensureAdmin, (req, res) => {
-    const { nameForm, emailForm, accountTypeForm, positionForm, passwordForm, password2Form } = req.body;
+    const { nameForm, emailForm, accountTypeForm, valetSummaryURLForm, positionForm, passwordForm, password2Form } = req.body;
     let errors = [];
 
     // Check required fields
-    if (!nameForm || !emailForm || !accountTypeForm || !passwordForm || !password2Form || (accountTypeForm == 'Employee' && !positionForm)) {
+    if (!nameForm || !emailForm || !accountTypeForm || !passwordForm || !password2Form || (accountTypeForm == 'Customer' && !valetSummaryURLForm) || (accountTypeForm == 'Employee' && !positionForm)) {
         errors.push({ msg: 'Please fill in all fields' });
     }
 
@@ -55,6 +55,7 @@ router.post('/register', ensureAdmin, (req, res) => {
             nameForm,
             emailForm,
             accountTypeForm,
+            valetSummaryURLForm,
             positionForm,
             passwordForm,
             password2Form
@@ -74,6 +75,7 @@ router.post('/register', ensureAdmin, (req, res) => {
                         nameForm,
                         emailForm,
                         accountTypeForm,
+                        valetSummaryURLForm,
                         positionForm,
                         passwordForm,
                         password2Form
@@ -83,6 +85,7 @@ router.post('/register', ensureAdmin, (req, res) => {
                         name: nameForm,
                         email: emailForm,
                         accountType: accountTypeForm,
+                        valetSummaryURL: valetSummaryURLForm,
                         position: positionForm,
                         password: passwordForm
                     });

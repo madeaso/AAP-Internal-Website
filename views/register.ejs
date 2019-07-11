@@ -28,6 +28,14 @@
                             selected="selected" <% } %>>SystemAdmin</option>
                     </select>
                 </div>
+                <!-- Dynamic Form Groups -->
+                <!-- Customer Fields -->
+                <div class="form-group" id="valetSummaryURLFormGroup">
+                    <label for="valetSummaryURLForm">Valet Summary URL</label>
+                    <input type="url" id="valetSummaryURLForm" name="valetSummaryURLForm" class="form-control" placeholder="GDS Report Embed URL (4:3)"
+                        value="<%= typeof valetSummaryURLForm != 'undefined' ? valetSummaryURLForm : '' %>" />
+                </div>
+                <!-- Employee Fields-->
                 <div class="form-group" id="positionFormGroup">
                     <label for="positionForm">Position</label>
                     <select id="positionForm" name="positionForm" class="form-control">

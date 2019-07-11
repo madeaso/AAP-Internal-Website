@@ -20,13 +20,14 @@ router.get('/user-list', ensureAdmin, (req, res) => User.find({})
 
 // Update a user's information
 router.post('/update-user', ensureAdmin, (req, res) => {
-    if (!req.body.nameForm || !req.body.accountTypeForm || (req.body.accountTypeForm == 'Employee' && !req.body.positionForm)) {
+    if (!req.body.nameForm || !req.body.accountTypeForm || (req.body.accountTypeForm == 'Customer' && !req.body.valetSummaryURLForm) || (req.body.accountTypeForm == 'Employee' && !req.body.positionForm)) {
         req.flash('error_msg', 'User has not been updated, fill in all fields');
         res.redirect('/admin/user-list');
     } else {
         User.updateOne({ _id: req.body.editUserID }, {
             name: req.body.nameForm,
             accountType: req.body.accountTypeForm,
+            valetSummaryURL: req.body.valetSummaryURLForm,
             position: req.body.positionForm
         }, function (err, dbres) {
             // `dbres.modifiedCount` contains the number of docs that MongoDB updated
