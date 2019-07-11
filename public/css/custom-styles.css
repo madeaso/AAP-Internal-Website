@@ -1,0 +1,27 @@
+.carousel-dark-bg {
+    background-color: black;
+}
+.carousel-heading {
+    color: white;
+}
+.carousel-img {
+    width: 100%;
+    max-height: 450px;
+    min-height: 300px;
+    opacity: 0.75;
+}
+.featurette {
+    padding: 0px;
+}
+.featurette-divider {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
+}
+.featurette-heading {
+    font-weight: bold;
+}
+.featurette-image {
+    width: 500px;
+    height: 500px;
+}
