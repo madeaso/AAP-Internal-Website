@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-const mongoose = require('mongoose');
 const ensureAdmin = require('../config/auth').ensureAdmin;
 
 // User model

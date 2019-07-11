@@ -1,0 +1,39 @@
+<table class="table table-sm">
+    <thead class="thead-light">
+        <tr>
+            <th scope="col">Actions</th>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Account Type</th>
+            <th scope="col">Date Created</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% list.forEach(function (user) { %>
+        <tr>
+            <td scope="row">
+                <!-- Edit user button -->
+                <a href="#" data-toggle="tooltip" title="Edit user">
+                    <button class="btn btn-sm" data-toggle="modal" data-target="#editUserModal"
+                        data-user_id="<%= user._id %>" data-name="<%= user.name %>" data-email="<%= user.email %>"
+                        data-account_type="<%= user.accountType %>" data-employee_position="<%= user.position %>"><i
+                            class="fas fa-edit"></i></button></a>
+                <!-- Reset password button -->
+                <a href="#" class="btn btn-sm" data-toggle="tooltip" title="Reset password"
+                    data-user_id="<%= user._id %>"><i class="fas fa-sync-alt"></i></a>
+                <!-- Delete user button -->
+                <a href="#" data-toggle="tooltip" title="Delete user">
+                    <button class="btn btn-sm" data-toggle="modal" data-target="#deleteUserModal"
+                        data-user_id="<%= user._id %>" data-name="<%= user.name %>" data-email="<%= user.email %>"><i
+                            class="fas fa-trash"></i></button></a>
+            </td>
+            <td><%= user.name %></td>
+            <td><%= user.email %></td>
+            <td><%= user.accountType %></td>
+            <td><%= user.date.toISOString().replace(/T/, ' ').replace(/\..+/, '') %></td>
+        </tr>
+        <% }); %>
+    </tbody>
+</table>
+<% include ./edit-user-modal %>
+<% include ./delete-user-modal %>
