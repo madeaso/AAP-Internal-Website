@@ -18,10 +18,12 @@ Give examples
 
 A step by step series of examples that tell you how to get a development env running
 
-Say what the step will be
+Initialize npm and install modules
 
 ```
-Give the example
+npm init
+npm i express bcryptjs passport passport-local ejs express-ejs-layouts mongoose connect-flash express-session
+npm i -D nodemon
 ```
 
 And repeat
