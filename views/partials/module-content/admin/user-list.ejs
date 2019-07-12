@@ -5,7 +5,7 @@
             <th scope="col">Name</th>
             <th scope="col">Email</th>
             <th scope="col">Account Type</th>
-            <th scope="col">Date Created</th>
+            <th scope="col">Last Updated</th>
         </tr>
     </thead>
     <tbody>
@@ -16,11 +16,13 @@
                 <a href="#" data-toggle="tooltip" title="Edit user">
                     <button class="btn btn-sm" data-toggle="modal" data-target="#editUserModal"
                         data-user_id="<%= user._id %>" data-name="<%= user.name %>" data-email="<%= user.email %>"
-                        data-account_type="<%= user.accountType %>" data-valet_summary_url="<%= user.valetSummaryURL %>" data-employee_position="<%= user.position %>"><i
-                            class="fas fa-edit"></i></button></a>
+                        data-account_type="<%= user.accountType %>" data-valet_summary_url="<%= user.valetSummaryURL %>"
+                        data-employee_position="<%= user.position %>"><i class="fas fa-edit"></i></button></a>
                 <!-- Reset password button -->
-                <a href="#" class="btn btn-sm" data-toggle="tooltip" title="Reset password"
-                    data-user_id="<%= user._id %>"><i class="fas fa-sync-alt"></i></a>
+                <a href="#" data-toggle="tooltip" title="Reset password">
+                    <button class="btn btn-sm" data-toggle="modal" data-target="#resetPasswordModal"
+                        data-user_id="<%= user._id %>" data-name="<%= user.name %>" data-email="<%= user.email %>"><i
+                            class="fas fa-sync"></i></button></a>
                 <!-- Delete user button -->
                 <a href="#" data-toggle="tooltip" title="Delete user">
                     <button class="btn btn-sm" data-toggle="modal" data-target="#deleteUserModal"
@@ -36,4 +38,5 @@
     </tbody>
 </table>
 <% include ./edit-user-modal %>
+<% include ./reset-password-modal %>
 <% include ./delete-user-modal %>

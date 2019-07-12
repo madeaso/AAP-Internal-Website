@@ -22,7 +22,7 @@ Initialize npm and install modules
 
 ```
 npm init
-npm i express bcryptjs passport passport-local ejs express-ejs-layouts mongoose connect-flash express-session
+npm i express bcryptjs passport passport-local ejs express-ejs-layouts mongoose connect-flash express-session nodemailer generate-password
 npm i -D nodemon
 ```
 

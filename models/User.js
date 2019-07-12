@@ -15,15 +15,20 @@ const UserSchema = new mongoose.Schema({
     },
     valetSummaryURL: {
         type: String,
-        required: false
+        default: ''
     },
     position: {
         type: String,
-        required: false
+        default: ''
     },
     password: {
         type: String,
         required: true
+    },
+    passwordReset: {
+        type: Boolean,
+        required: true,
+        default: true  
     },
     date: {
         type: Date,

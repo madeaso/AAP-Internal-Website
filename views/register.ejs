@@ -32,7 +32,8 @@
                 <!-- Customer Fields -->
                 <div class="form-group" id="valetSummaryURLFormGroup">
                     <label for="valetSummaryURLForm">Valet Summary URL</label>
-                    <input type="url" id="valetSummaryURLForm" name="valetSummaryURLForm" class="form-control" placeholder="GDS Report Embed URL (4:3)"
+                    <input type="url" id="valetSummaryURLForm" name="valetSummaryURLForm" class="form-control"
+                        placeholder="GDS Report Embed URL (4:3)"
                         value="<%= typeof valetSummaryURLForm != 'undefined' ? valetSummaryURLForm : '' %>" />
                 </div>
                 <!-- Employee Fields-->
@@ -49,18 +50,6 @@
                         <option <% if (typeof positionForm != 'undefined' && positionForm == '...') { %>
                             selected="selected" <% } %>>...</option>
                     </select>
-                </div>
-                <div class="form-group">
-                    <label for="passwordForm">Password</label>
-                    <input type="password" id="passwordForm" name="passwordForm" class="form-control"
-                        placeholder="Create Password"
-                        value="<%= typeof passwordForm != 'undefined' ? passwordForm : '' %>" />
-                </div>
-                <div class="form-group">
-                    <label for="password2Form">Confirm Password</label>
-                    <input type="password" id="password2Form" name="password2Form" class="form-control"
-                        placeholder="Confirm Password"
-                        value="<%= typeof password2Form != 'undefined' ? password2Form : '' %>" />
                 </div>
                 <button type="submit" class="btn btn-primary btn-block">
                     Register
