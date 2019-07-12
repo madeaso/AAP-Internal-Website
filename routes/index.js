@@ -21,6 +21,7 @@ router.get('/', (req, res) => {
 router.get('/dashboard', ensureAuthenticated, (req, res) =>
     res.render('dashboard', {
         activePage: 'dashboard',
+        activeModule: 'none',
         name: req.user.name,
         email: req.user.email,
         accountType: req.user.accountType

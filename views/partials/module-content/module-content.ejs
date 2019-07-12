@@ -1,3 +1,8 @@
+<!-- Announcements -->
+<% if (typeof activeModule != 'undefined' && activeModule == 'none') { %>
+    <% include ./announcements %>
+<% } %>
+
 <!-- Admin modules -->
 <% if (typeof activeModule != 'undefined' && activeModule == 'user-list') { %>
     <% include ./admin/user-list %>
