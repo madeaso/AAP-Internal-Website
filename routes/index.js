@@ -2,6 +2,9 @@ const express = require('express');
 const router = express.Router();
 const ensureAuthenticated = require('../config/auth').ensureAuthenticated;
 
+// Announcement model
+const Announcement = require('../models/Announcement');
+
 // Welcome Page
 router.get('/', (req, res) => {
     if (req.user) {
@@ -18,13 +21,17 @@ router.get('/', (req, res) => {
 });
 
 // Dashboard
-router.get('/dashboard', ensureAuthenticated, (req, res) =>
-    res.render('dashboard', {
-        activePage: 'dashboard',
-        activeModule: 'none',
-        name: req.user.name,
-        email: req.user.email,
-        accountType: req.user.accountType
-    }));
+router.get('/dashboard', ensureAuthenticated, (req, res) => Announcement.find({})
+    .then(announcements => {
+        res.render('dashboard', {
+            activePage: 'dashboard',
+            activeModule: 'announcements',
+            name: req.user.name,
+            email: req.user.email,
+            accountType: req.user.accountType,
+            announcements
+        });
+    })
+);
 
 module.exports = router;

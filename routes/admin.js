@@ -8,8 +8,9 @@ const nodemailer = require('nodemailer');
 const ensureAdmin = require('../config/auth').ensureAdmin;
 const EmailAuth = require('../config/keys').EmailAuth;
 
-// User model
+// Models
 const User = require('../models/User');
+const Announcement = require('../models/Announcement');
 
 // Show user list
 router.get('/user-list', ensureAdmin, (req, res) => User.find({})
@@ -107,6 +108,28 @@ router.post('/delete-user', ensureAdmin, (req, res) => {
             res.redirect('/admin/user-list');
         }
     });
+});
+
+// New announcement
+router.post('/new-announcement', ensureAdmin, (req, res) => {
+    const { titleForm, messageForm } = req.body;
+    // Validate announcement
+    if (!titleForm || !messageForm) {
+        req.flash('error_msg', 'Announcement title and message are both required');
+        res.redirect('/dashboard');
+    } else {
+        // Save announcement
+        const newAnnouncement = new Announcement({
+            author: req.user.name,
+            title: titleForm,
+            message: messageForm
+        });
+        newAnnouncement.save()
+            .then(announcement => {
+                req.flash('success_msg', 'Announcement has been added');
+                res.redirect('/dashboard');
+            });
+    }
 });
 
 module.exports = router;

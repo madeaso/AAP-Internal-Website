@@ -1,1 +1,21 @@
-<h1>Announcements Here!</h1>
+<h1>Announcements</h1>
+
+<% announcements.forEach(function(announcement) { %>
+<div class="card mb-3">
+    <div class="card-header">
+        <%= announcement.title %>
+    </div>
+    <div class="card-body">
+        <blockquote class="blockquote mb-0">
+            <p><%= announcement.message %></p>
+            <footer class="blockquote-footer"><%= announcement.author %>
+                <%= announcement.date.toISOString().replace(/T/, ' ').replace(/\..+/, '') %></footer>
+        </blockquote>
+    </div>
+</div>
+<% }); %>
+
+<% if (typeof accountType != 'undefined' && accountType == 'SystemAdmin') { %>
+<button class="btn btn-primary" data-toggle="modal" data-target="#newAnnouncementModal">New Announcement</button>
+<% include ./admin/new-announcement-modal %>
+<% } %>
