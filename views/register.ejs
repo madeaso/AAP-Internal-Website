@@ -7,17 +7,17 @@
             <% include ./partials/messages %>
             <form action="/users/register" method="POST">
                 <div class="form-group">
-                    <label for="nameForm">Name</label>
+                    <label class="required" for="nameForm">Name</label>
                     <input type="name" id="nameForm" name="nameForm" class="form-control" placeholder="Enter Name"
                         value="<%= typeof nameForm != 'undefined' ? nameForm : '' %>" />
                 </div>
                 <div class="form-group">
-                    <label for="emailForm">Email</label>
+                    <label class="required" for="emailForm">Email</label>
                     <input type="email" id="emailForm" name="emailForm" class="form-control" placeholder="Enter Email"
                         value="<%= typeof emailForm != 'undefined' ? emailForm : '' %>" />
                 </div>
                 <div class="form-group">
-                    <label for="accountTypeForm">Account Type</label>
+                    <label class="required" for="accountTypeForm">Account Type</label>
                     <select id="accountTypeForm" name="accountTypeForm" class="form-control">
                         <option></option>
                         <option <% if (typeof accountTypeForm != 'undefined' && accountTypeForm == 'Customer') { %>
@@ -28,11 +28,11 @@
                             selected="selected" <% } %>>SystemAdmin</option>
                     </select>
                 </div>
-                
+
                 <!-- Dynamic Form Groups -->
-                <!-- Employee Fields-->
+                <!-- Employee Fields -->
                 <div class="form-group" id="positionFormGroup">
-                    <label for="positionForm">Position</label>
+                    <label class="required" for="positionForm">Position</label>
                     <select id="positionForm" name="positionForm" class="form-control">
                         <option></option>
                         <option <% if (typeof positionForm != 'undefined' && positionForm == 'Associate I') { %>

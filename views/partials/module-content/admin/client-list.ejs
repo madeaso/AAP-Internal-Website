@@ -14,22 +14,19 @@
             <td scope="row">
                 <!-- Edit account button -->
                 <a href="#" data-toggle="tooltip" title="Edit account">
-                    <button class="btn btn-sm" data-toggle="modal" data-target="#editUserModal"
-                        data-user_id="<%= user._id %>" data-name="<%= user.name %>" data-email="<%= user.email %>"
-                        data-account_type="<%= user.accountType %>" data-valet_summary_url="<%= user.valetSummaryURL %>"
-                        data-employee_position="<%= user.position %>"><i class="fas fa-edit"></i></button></a>
+                    <button class="btn btn-sm" data-toggle="modal" data-target="#"><i
+                            class="fas fa-edit"></i></button></a>
                 <!-- Delete account button -->
-                <a href="#" data-toggle="tooltip" title="Delete user">
-                    <button class="btn btn-sm" data-toggle="modal" data-target="#deleteUserModal"
-                        data-user_id="<%= user._id %>" data-name="<%= user.name %>" data-email="<%= user.email %>"><i
+                <a href="#" data-toggle="tooltip" title="Delete account">
+                    <button class="btn btn-sm" data-toggle="modal" data-target="#"><i
                             class="fas fa-trash"></i></button></a>
             </td>
             <td><%= clientAccount.name %></td>
             <td><%= clientAccount.address %></td>
             <td><% if (clientAccount.valetSummaryURL != '') { %>
-                <i class="fas fa-check"></i>
+                <i class="fas fa-check" style="color: green"></i>
                 <% } else { %>
-                <i class="fas fa-times"></i>
+                <i class="fas fa-times" style="color: red"></i>
                 <% } %></td>
             <td><%= clientAccount.date.toLocaleDateString() + ' ' + clientAccount.date.toLocaleTimeString() %></td>
         </tr>

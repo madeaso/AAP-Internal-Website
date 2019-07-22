@@ -24,3 +24,8 @@
     width: 500px;
     height: 500px;
 }
+
+.required:after {
+    content:"*";
+    color:red;
+  }

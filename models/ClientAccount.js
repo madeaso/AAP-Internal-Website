@@ -1,7 +1,5 @@
 const mongoose = require('mongoose');
 
-const User = require('./User');
-
 const ClientAccountSchema = new mongoose.Schema({
     name: {
         type: String,
@@ -30,9 +28,13 @@ const ClientAccountSchema = new mongoose.Schema({
         phone: String,
         email: String
     },
-    relatedUsers: []
+    relatedUsers: [String],
+    date: {
+        type: Date,
+        default: Date.now
+    }
 })
 
-const ClientAccount = mongoose.model('Client', ClientAccountSchema);
+const ClientAccount = mongoose.model('Client Account', ClientAccountSchema);
 
 module.exports = ClientAccount;

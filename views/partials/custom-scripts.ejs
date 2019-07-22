@@ -1,5 +1,11 @@
 <script>
-    <% if (typeof activeModule != 'undefined' && activeModule == 'user-list') { %>
+<% if (typeof activeModule != 'undefined' && activeModule == 'client-list') { %>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+        <% } %>
+
+        <% if (typeof activeModule != 'undefined' && activeModule == 'user-list') { %>
         $(function () {
             $('[data-toggle="tooltip"]').tooltip()
         })
@@ -79,12 +85,6 @@
                 $('#positionForm').val("")
                 $('#positionFormGroup').hide();
                 $('#positionFormGroup').removeAttr('required');
-            }
-            if ($(this).val() == "Customer") {
-                $('#valetSummaryURLFormGroup').show();
-            } else {
-                $('#valetSummaryURLForm').val("")
-                $('#valetSummaryURLFormGroup').hide();
             }
         });
         $("#accountTypeForm").trigger("change");

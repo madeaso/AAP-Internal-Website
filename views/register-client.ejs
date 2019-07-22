@@ -5,16 +5,15 @@
             <% include ./partials/messages %>
             <form action="/admin/register-client" method="POST">
                 <div class="form-group">
-                    <label for="nameForm">Name</label>
+                    <label class="required" for="nameForm">Name</label>
                     <input type="name" id="nameForm" name="nameForm" class="form-control"
                         placeholder="Enter Account Name"
                         value="<%= typeof nameForm != 'undefined' ? nameForm : '' %>" />
                 </div>
                 <div class="form-group">
-                    <label for="addressForm">Address</label>
+                    <label class="required" for="addressForm">Address</label>
                     <textarea id="addressForm" rows="3" name="addressForm" class="form-control"
-                        placeholder="Enter Address"
-                        value="<%= typeof addressForm != 'undefined' ? addressForm : '' %>"></textarea>
+                        placeholder="Enter Address"><%= typeof addressForm != 'undefined' ? addressForm : '' %></textarea>
                 </div>
                 <div class="form-group" id="valetSummaryURLFormGroup">
                     <label for="valetSummaryURLForm">Valet Summary URL</label>
@@ -30,21 +29,21 @@
                         <label for="operationalContactName" class="col-sm-2 col-form-label">Name</label>
                         <div class="col-sm-10">
                             <input type="text" class="form-control" id="operationalContactName"
-                                name="operationalContactName" value="">
+                                name="operationalContactName" value="<%= typeof operationalContactName != 'undefined' ? operationalContactName : '' %>">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="operationalContactEmail" class="col-sm-2 col-form-label">Email</label>
                         <div class="col-sm-10">
                             <input type="email" class="form-control" id="operationalContactEmail"
-                                name="operationalContactEmail" value="">
+                                name="operationalContactEmail" value="<%= typeof operationalContactEmail != 'undefined' ? operationalContactEmail : '' %>">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="operationalContactPhone" class="col-sm-2 col-form-label">Phone</label>
                         <div class="col-sm-10">
                             <input type="text" class="form-control" id="operationalContactPhone"
-                                name="operationalContactPhone" value="">
+                                name="operationalContactPhone" value="<%= typeof operationalContactPhone != 'undefined' ? operationalContactPhone : '' %>">
                         </div>
                     </div>
                 </div>
@@ -55,56 +54,67 @@
                     <div class="form-group row">
                         <label for="salesContactName" class="col-sm-2 col-form-label">Name</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="salesContactName"
-                                name="salesContactName" value="">
+                            <input type="text" class="form-control" id="salesContactName" name="salesContactName"
+                                value="<%= typeof salesContactName != 'undefined' ? salesContactName : '' %>">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="salesContactEmail" class="col-sm-2 col-form-label">Email</label>
                         <div class="col-sm-10">
-                            <input type="email" class="form-control" id="salesContactEmail"
-                                name="salesContactEmail" value="">
+                            <input type="email" class="form-control" id="salesContactEmail" name="salesContactEmail"
+                                value="<%= typeof salesContactEmail != 'undefined' ? salesContactEmail : '' %>">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="salesContactPhone" class="col-sm-2 col-form-label">Phone</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="salesContactPhone"
-                                name="salesContactPhone" value="">
+                            <input type="text" class="form-control" id="salesContactPhone" name="salesContactPhone"
+                                value="<%= typeof salesContactPhone != 'undefined' ? salesContactPhone : '' %>">
                         </div>
                     </div>
                 </div>
 
                 <!-- Billing Contact Info -->
                 <div class="form-group" id="billingContactFormGroup">
-                        <label>Billing Contact Information</label>
-                        <div class="form-group row">
-                            <label for="billingContactName" class="col-sm-2 col-form-label">Name</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="billingContactName"
-                                    name="billingContactName" value="">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="billingContactEmail" class="col-sm-2 col-form-label">Email</label>
-                            <div class="col-sm-10">
-                                <input type="email" class="form-control" id="billingContactEmail"
-                                    name="billingContactEmail" value="">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="billingContactPhone" class="col-sm-2 col-form-label">Phone</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="billingContactPhone"
-                                    name="billingContactPhone" value="">
-                            </div>
+                    <label>Billing Contact Information</label>
+                    <div class="form-group row">
+                        <label for="billingContactName" class="col-sm-2 col-form-label">Name</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="billingContactName" name="billingContactName"
+                                value="<%= typeof billingContactName != 'undefined' ? billingContactName : '' %>">
                         </div>
                     </div>
+                    <div class="form-group row">
+                        <label for="billingContactEmail" class="col-sm-2 col-form-label">Email</label>
+                        <div class="col-sm-10">
+                            <input type="email" class="form-control" id="billingContactEmail" name="billingContactEmail"
+                                value="<%= typeof billingContactEmail != 'undefined' ? billingContactEmail : '' %>">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="billingContactPhone" class="col-sm-2 col-form-label">Phone</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="billingContactPhone" name="billingContactPhone"
+                                value="<%= typeof billingContactPhone != 'undefined' ? billingContactPhone : '' %>">
+                        </div>
+                    </div>
+                </div>
 
-                <button type="submit" class="btn btn-primary btn-block">
-                    Create
-                </button>
-            </form>
+                <!-- User Select -->
+                <label for="relatedUsersForm">Related Users (hold shift to select more than one)</label>
+                <select multiple class="form-control" id="relatedUsersForm" name="relatedUsersForm">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                </select>
         </div>
+
+        <button type="submit" class="btn btn-primary btn-block">
+            Create
+        </button>
+        </form>
     </div>
+</div>
 </div>

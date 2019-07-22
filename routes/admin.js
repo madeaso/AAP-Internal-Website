@@ -51,19 +51,94 @@ router.get('/register-client', ensureAdmin, (req, res) => {
 
 // Create new client account
 router.post('/register-client', ensureAdmin, (req, res) => {
+    const { nameForm, addressForm, valetSummaryURLForm,
+        operationalContactName, operationalContactEmail, operationalContactPhone,
+        salesContactName, salesContactEmail, salesContactPhone,
+        billingContactName, billingContactEmail, billingContactPhone,
+        relatedUsersForm } = req.body;
 
+        let errors = [];
+    // Check required fields
+    if (!nameForm || !addressForm) {
+        errors.push({ msg: 'Account name and address are both required' });
+        res.render('register-client', {
+            activePage: 'register-client',
+            name: req.user.name,
+            email: req.user.email,
+            accountType: req.user.accountType,
+            nameForm, addressForm, valetSummaryURLForm,
+            operationalContactName, operationalContactEmail, operationalContactPhone,
+            salesContactName, salesContactEmail, salesContactPhone,
+            billingContactName, billingContactEmail, billingContactPhone,
+            relatedUsersForm,
+            errors
+        });
+    } else {
+        // Validation passed
+
+        ClientAccount.findOne({ name: nameForm })
+            .then(clientAccount => {
+                if (clientAccount) {
+                    // Account exists
+                    errors.push({ msg: 'A client account with that name already exists' });
+                    res.render('register-client', {
+                        activePage: 'register-client',
+                        name: req.user.name,
+                        email: req.user.email,
+                        accountType: req.user.accountType,
+                        nameForm, addressForm, valetSummaryURLForm,
+                        operationalContactName, operationalContactEmail, operationalContactPhone,
+                        salesContactName, salesContactEmail, salesContactPhone,
+                        billingContactName, billingContactEmail, billingContactPhone,
+                        relatedUsersForm,
+                        errors
+                    });
+                } else {
+                    const newClientAccount = new ClientAccount({
+                        name: nameForm,
+                        address: addressForm,
+                        valetSummaryURL: valetSummaryURLForm,
+                        operationalContact: {
+                            name: operationalContactName,
+                            email: operationalContactEmail,
+                            phone: operationalContactPhone
+                        },
+                        salesContact: {
+                            name: salesContactName,
+                            email: salesContactEmail,
+                            phone: salesContactPhone
+                        },
+                        billingContact: {
+                            name: billingContactName,
+                            email: billingContactEmail,
+                            phone: billingContactPhone
+                        },
+                        relatedUsers: relatedUsersForm
+                    });
+                    newClientAccount.save()
+                        .then(clientAccount => {
+                            req.flash('success_msg', `The account ${newClientAccount.name} has been created`);
+                            res.redirect('/admin/register-client');
+                        })
+                        .catch(err => {
+                            console.log(err);
+                            req.flash('error_msg', 'An error occured');
+                            res.redirect('/admin/register-client');
+                        });
+                }
+            })
+    }
 });
 
 // Update a user's information
 router.post('/update-user', ensureAdmin, (req, res) => {
-    if (!req.body.nameForm || !req.body.accountTypeForm || (req.body.accountTypeForm == 'Customer' && !req.body.valetSummaryURLForm) || (req.body.accountTypeForm == 'Employee' && !req.body.positionForm)) {
+    if (!req.body.nameForm || !req.body.accountTypeForm || (req.body.accountTypeForm == 'Employee' && !req.body.positionForm)) {
         req.flash('error_msg', 'User has not been updated, fill in all fields');
         res.redirect('/admin/user-list');
     } else {
         User.updateOne({ _id: req.body.editUserID }, {
             name: req.body.nameForm,
             accountType: req.body.accountTypeForm,
-            valetSummaryURL: req.body.valetSummaryURLForm,
             position: req.body.positionForm
         }, function (err, dbres) {
             // `dbres.modifiedCount` contains the number of docs that MongoDB updated
