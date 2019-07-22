@@ -1,0 +1,110 @@
+<div class="row mt-5">
+    <div class="col-md-6 m-auto">
+        <div class="card card-body">
+            <h1 class="text-center mb-3"><i class="fas fa-folder-plus"></i> New Client Account</h1>
+            <% include ./partials/messages %>
+            <form action="/admin/register-client" method="POST">
+                <div class="form-group">
+                    <label for="nameForm">Name</label>
+                    <input type="name" id="nameForm" name="nameForm" class="form-control"
+                        placeholder="Enter Account Name"
+                        value="<%= typeof nameForm != 'undefined' ? nameForm : '' %>" />
+                </div>
+                <div class="form-group">
+                    <label for="addressForm">Address</label>
+                    <textarea id="addressForm" rows="3" name="addressForm" class="form-control"
+                        placeholder="Enter Address"
+                        value="<%= typeof addressForm != 'undefined' ? addressForm : '' %>"></textarea>
+                </div>
+                <div class="form-group" id="valetSummaryURLFormGroup">
+                    <label for="valetSummaryURLForm">Valet Summary URL</label>
+                    <input type="url" id="valetSummaryURLForm" name="valetSummaryURLForm" class="form-control"
+                        placeholder="GDS Report Embed URL (4:3)"
+                        value="<%= typeof valetSummaryURLForm != 'undefined' ? valetSummaryURLForm : '' %>" />
+                </div>
+
+                <!-- Operational Contact Info -->
+                <div class="form-group" id="operationalContactFormGroup">
+                    <label>Operational Contact Information</label>
+                    <div class="form-group row">
+                        <label for="operationalContactName" class="col-sm-2 col-form-label">Name</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="operationalContactName"
+                                name="operationalContactName" value="">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="operationalContactEmail" class="col-sm-2 col-form-label">Email</label>
+                        <div class="col-sm-10">
+                            <input type="email" class="form-control" id="operationalContactEmail"
+                                name="operationalContactEmail" value="">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="operationalContactPhone" class="col-sm-2 col-form-label">Phone</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="operationalContactPhone"
+                                name="operationalContactPhone" value="">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sales Contact Info -->
+                <div class="form-group" id="salesContactFormGroup">
+                    <label>Sales Contact Information</label>
+                    <div class="form-group row">
+                        <label for="salesContactName" class="col-sm-2 col-form-label">Name</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="salesContactName"
+                                name="salesContactName" value="">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="salesContactEmail" class="col-sm-2 col-form-label">Email</label>
+                        <div class="col-sm-10">
+                            <input type="email" class="form-control" id="salesContactEmail"
+                                name="salesContactEmail" value="">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="salesContactPhone" class="col-sm-2 col-form-label">Phone</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="salesContactPhone"
+                                name="salesContactPhone" value="">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Billing Contact Info -->
+                <div class="form-group" id="billingContactFormGroup">
+                        <label>Billing Contact Information</label>
+                        <div class="form-group row">
+                            <label for="billingContactName" class="col-sm-2 col-form-label">Name</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="billingContactName"
+                                    name="billingContactName" value="">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="billingContactEmail" class="col-sm-2 col-form-label">Email</label>
+                            <div class="col-sm-10">
+                                <input type="email" class="form-control" id="billingContactEmail"
+                                    name="billingContactEmail" value="">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="billingContactPhone" class="col-sm-2 col-form-label">Phone</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="billingContactPhone"
+                                    name="billingContactPhone" value="">
+                            </div>
+                        </div>
+                    </div>
+
+                <button type="submit" class="btn btn-primary btn-block">
+                    Create
+                </button>
+            </form>
+        </div>
+    </div>
+</div>

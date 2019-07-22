@@ -1,16 +1,21 @@
 <div class="list-group">
     <!-- All Users -->
-    <a href="/dashboard" class="list-group-item list-group-item-action <% if (typeof activeModule != 'undefined' && activeModule == 'announcements') { %> active <% } %>">Announcements</a>
-    
+    <a href="/dashboard"
+        class="list-group-item list-group-item-action <% if (typeof activeModule != 'undefined' && activeModule == 'announcements') { %> active <% } %>">Announcements</a>
+
     <!--Customer Dashboard Items-->
     <% if (accountType == 'Customer') { %>
-    <a href="#" class="list-group-item list-group-item-action">Status</a>
-    <a href="#" class="list-group-item list-group-item-action nav-link dropdown-toggle <% if (typeof activeModule != 'undefined' && activeModule == 'valet-summary') { %> active <% } %>" data-toggle="dropdown"
-        role="button" aria-haspopup="true" aria-expanded="false">Reports
+    <a href="/client/account-info"
+        class="list-group-item list-group-item-action <% if (typeof activeModule != 'undefined' && activeModule == 'account-info') { %> active <% } %>">Account
+        Info</a>
+    <a href="#"
+        class="list-group-item list-group-item-action nav-link dropdown-toggle <% if (typeof activeModule != 'undefined' && activeModule == 'valet-summary') { %> active <% } %>"
+        data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Reports
     </a>
     <div class="dropdown-menu" x-placement="bottom-start"
         style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 40px, 0px);">
-        <a class="dropdown-item <% if (typeof activeModule != 'undefined' && activeModule == 'valet-summary') { %> active <% } %>" href="/client/valet-summary">Valet Count Summary</a>
+        <a class="dropdown-item <% if (typeof activeModule != 'undefined' && activeModule == 'valet-summary') { %> active <% } %>"
+            href="/client/valet-summary">Valet Count Summary</a>
         <div class="dropdown-divider"></div>
         <a class="dropdown-item" href="#">Placeholder</a>
     </div>
@@ -35,13 +40,29 @@
 
     <!--Admin Dashboard Items-->
     <% if (accountType == 'SystemAdmin') { %>
-    <a href="#" class="list-group-item list-group-item-action nav-link dropdown-toggle <% if (typeof activeModule != 'undefined' && activeModule == 'user-list') { %> active <% } %>" data-toggle="dropdown"
-        role="button" aria-haspopup="true" aria-expanded="false">Manage Users</a>
-    <div class="dropdown-menu" x-placement="bottom-start"
-        style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 40px, 0px);">
-        <a class="dropdown-item" href="/users/register">Add New User</a>
-        <div class="dropdown-divider"></div>
-        <a class="dropdown-item <% if (typeof activeModule != 'undefined' && activeModule == 'user-list') { %> active <% } %>" href="/admin/user-list">Edit Existing Users</a>
+    <div class="dropdown">
+        <a href="#"
+            class="list-group-item list-group-item-action nav-link dropdown-toggle <% if (typeof activeModule != 'undefined' && activeModule == 'user-list') { %> active <% } %>"
+            data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Manage Users</a>
+        <div class="dropdown-menu" x-placement="bottom-start"
+            style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 40px, 0px);">
+            <a class="dropdown-item" href="/users/register">Add New User</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item <% if (typeof activeModule != 'undefined' && activeModule == 'user-list') { %> active <% } %>"
+                href="/admin/user-list">Edit Existing Users</a>
+        </div>
+    </div>
+    <div class="dropdown">
+        <a href="#"
+            class="list-group-item list-group-item-action nav-link dropdown-toggle <% if (typeof activeModule != 'undefined' && activeModule == 'client-list') { %> active <% } %>"
+            data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Manage Client Accounts</a>
+        <div class="dropdown-menu" x-placement="bottom-start"
+            style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 40px, 0px);">
+            <a class="dropdown-item" href="/admin/register-client">Add New Client Account</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item <% if (typeof activeModule != 'undefined' && activeModule == 'client-list') { %> active <% } %>"
+                href="/admin/client-list">Edit Existing Clients</a>
+        </div>
     </div>
     <a href="#" class="list-group-item list-group-item-action disabled">Disabled Placeholder
     </a>

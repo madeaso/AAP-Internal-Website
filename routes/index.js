@@ -23,6 +23,7 @@ router.get('/', (req, res) => {
 // Dashboard
 router.get('/dashboard', ensureAuthenticated, (req, res) => Announcement.find({})
     .then(announcements => {
+        announcements.sort((a, b) => b.date - a.date);
         res.render('dashboard', {
             activePage: 'dashboard',
             activeModule: 'announcements',

@@ -13,7 +13,7 @@ const UserSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    valetSummaryURL: {
+    clientAccountIDRef: {
         type: String,
         default: ''
     },
@@ -28,7 +28,7 @@ const UserSchema = new mongoose.Schema({
     passwordReset: {
         type: Boolean,
         required: true,
-        default: true  
+        default: true
     },
     date: {
         type: Date,

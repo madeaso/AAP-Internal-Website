@@ -1,14 +1,20 @@
 <!-- Announcements -->
 <% if (typeof activeModule != 'undefined' && activeModule == 'announcements') { %>
-    <% include ./announcements %>
+<% include ./announcements %>
 <% } %>
 
 <!-- Admin modules -->
 <% if (typeof activeModule != 'undefined' && activeModule == 'user-list') { %>
-    <% include ./admin/user-list %>
+<% include ./admin/user-list %>
+<% } %>
+<% if (typeof activeModule != 'undefined' && activeModule == 'client-list') { %>
+<% include ./admin/client-list %>
 <% } %>
 
 <!-- Client modules -->
+<% if (typeof activeModule != 'undefined' && activeModule == 'account-info') { %>
+<% include ./client/account-info %>
+<% } %>
 <% if (typeof activeModule != 'undefined' && activeModule == 'valet-summary') { %>
-    <% include ./client/valet-summary %>
+<% include ./client/valet-summary %>
 <% } %>

@@ -10,6 +10,7 @@ const EmailAuth = require('../config/keys').EmailAuth;
 
 // Models
 const User = require('../models/User');
+const ClientAccount = require('../models/ClientAccount');
 const Announcement = require('../models/Announcement');
 
 // Show user list
@@ -24,6 +25,34 @@ router.get('/user-list', ensureAdmin, (req, res) => User.find({})
             list: users
         });
     }));
+
+// Show client list
+router.get('/client-list', ensureAdmin, (req, res) => ClientAccount.find({})
+    .then(clientAccounts => {
+        res.render('dashboard', {
+            activePage: 'dashboard',
+            activeModule: 'client-list',
+            name: req.user.name,
+            email: req.user.email,
+            accountType: req.user.accountType,
+            list: clientAccounts
+        });
+    }));
+
+// New client account form
+router.get('/register-client', ensureAdmin, (req, res) => {
+    res.render('register-client', {
+        activePage: 'register-client',
+        name: req.user.name,
+        email: req.user.email,
+        accountType: req.user.accountType
+    });
+});
+
+// Create new client account
+router.post('/register-client', ensureAdmin, (req, res) => {
+
+});
 
 // Update a user's information
 router.post('/update-user', ensureAdmin, (req, res) => {
